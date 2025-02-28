@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../Assets/logo.png';
 import chefLogo from '../Assets/Vintage-chef-character-logo.png';
+import tiffin from '../Assets/tiffin.jpeg'
 import './HomePage.css';
 import { FaHome, FaUtensils, FaInfoCircle, FaPhoneAlt, FaHandshake } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false); // State to control modal visibility
   const navigate = useNavigate();
 
   const toggleMenu = () => {
@@ -19,9 +21,22 @@ const HomePage = () => {
     window.location.href = `tel:${phoneNumber}`;
   };
 
-  const openMenu = ()=>{
+  const openMenu = () => {
     navigate('/Menu');
-  }
+  };
+
+  const openModal = () => {
+    setShowModal(true); // Show the modal when page loads
+  };
+
+  const closeModal = () => {
+    setShowModal(false); // Close the modal
+  };
+
+  // UseEffect hook to open the modal when the page loads
+  useEffect(() => {
+    openModal(); // Automatically open the modal when the page loads
+  }, []);
 
   return (
     <div className='home-page'>
@@ -45,21 +60,31 @@ const HomePage = () => {
         </h1>
         <p className='main-description'><b>Experience a delightful fusion of taste and ambiance in every visit.</b></p>
         <div>
-        <button className='cta-button' onClick={handleCall}>Order Now</button>
-        <button className='cta-button' onClick={openMenu} style={{margin: '20px'}}>Check Out Our Menu</button>
+          <button className='cta-button' onClick={handleCall}>Order Now</button>
+          <button className='cta-button' onClick={openMenu} style={{margin: '20px'}}>Check Out Our Menu</button>
         </div>
       </div>
 
-      {/* Mobile Menu Toggle Button */}
-      <nav >
-      {!showMenu && 
-      (<img src={logo} alt='Logo' height={100} width={100} className='mobile-menu-logo' style={{position: 'fixed'}} />)
-      }
-      {!showMenu && (
-        <div className='mobile-menu-toggle' onClick={toggleMenu} style={{color: 'black'}}>
-          ☰
+      {/* Modal for displaying an image */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <span className="modal-close" onClick={closeModal}>&times;</span>
+            <img src={tiffin} alt="Special Image" className="modal-image" />
+          </div>
         </div>
       )}
+
+      {/* Mobile Menu Toggle Button */}
+      <nav >
+        {!showMenu && 
+        (<img src={logo} alt='Logo' height={100} width={100} className='mobile-menu-logo' style={{position: 'fixed'}} />)
+        }
+        {!showMenu && (
+          <div className='mobile-menu-toggle' onClick={toggleMenu} style={{color: 'black'}}>
+            ☰
+          </div>
+        )}
       </nav>
 
       {/* Mobile Menu */}

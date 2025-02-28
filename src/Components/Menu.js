@@ -168,12 +168,13 @@ const MenuPage = () => {
                   <h2>{item.name}</h2>
                   <p>{item.description}</p>
                   <p className="price">{item.price}</p>
-                  <span>
+                  {/* <span>
                     {!addMoreOn ? <a href={`tel:${phoneNumber}`} className="order-button">Order on Call</a> : <></>}
                   </span>
                   <button onClick={() => openModal(item.name, item.price, item.description)} className="order-button-whatsapp">
                     <FaWhatsapp /> {dispText}
-                  </button>
+                  </button> */}
+                  <b>Coming Soon</b>
                 </div>
               </div>
             ))}
