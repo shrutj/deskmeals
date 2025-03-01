@@ -146,7 +146,7 @@ const MenuPage = () => {
             />
           </div>
 
-          <div className="filter-bar">
+          {/* <div className="filter-bar">
             {categories.map(category => (
               <button
                 key={category}
@@ -157,10 +157,10 @@ const MenuPage = () => {
                 {category}
               </button>
             ))}
-          </div>
+          </div> */}
 
           <div className="menu-items">
-            {filteredItems.map(item => (
+            {/* {filteredItems.map(item => (
               <div key={item.id} className="menu-item">
                 <img src={vegetarianSign} alt="Vegetarian" className="vegetarian-sign" style={{ height: '25px', width: '25px', borderRadius: '0px' }} />
                 <img src={item.imageUrl} alt={item.name} />
@@ -168,16 +168,17 @@ const MenuPage = () => {
                   <h2>{item.name}</h2>
                   <p>{item.description}</p>
                   <p className="price">{item.price}</p>
-                  {/* <span>
+                  <span>
                     {!addMoreOn ? <a href={`tel:${phoneNumber}`} className="order-button">Order on Call</a> : <></>}
                   </span>
                   <button onClick={() => openModal(item.name, item.price, item.description)} className="order-button-whatsapp">
                     <FaWhatsapp /> {dispText}
-                  </button> */}
+                  </button>
                   <b>Coming Soon</b>
                 </div>
               </div>
-            ))}
+            ))} */}
+            <h1 style={{width:"100%", textAlign: 'center', color:'white', textShadow:"0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff, 0 0 20px #0ff, 0 0 25px #0ff, 0 0 30px #0ff"}}>Coming Soon</h1>
           </div>
         </div>
       </main>
